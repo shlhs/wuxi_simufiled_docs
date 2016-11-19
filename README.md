@@ -6,7 +6,7 @@
 
 ### 环境准备
  - Linux系统的PC或服务器, 推荐使用Ubuntu14.04:    
-```shell
+```Bash
 root@iZ28yy5kssxZ:~# lsb_release -a 
 No LSB modules are available.
 Distributor ID:	Ubuntu
@@ -31,7 +31,7 @@ Thumbor v6.0.1 (22-Mar-2016)
 root@iZ28yy5kssxZ:~# supervisord --version
 3.3.1
 ```
- - 准备Mysql Service，可直接使用已有，___需修改mysql的配置 max_allowed_packet=1024\*1024\*48、innodb_log_file_size=140M___; 创建相应DB及其TABLE；以在此台机器上，可连接到数据库为结果。可以直接运行sql附件文件（simufiled_stru），具体sql如下：  
+ - 准备Mysql Service，可直接使用已有，___需修改mysql的配置 max_allowed_packet=1024\*1024\*48、innodb_log_file_size=140M___; 创建相应DB及其TABLE；以在此台机器上，可连接到数据库为结果。可以直接运行sql附件文件（simufiled_stru），具体[sql](https://github.com/shlhs/wuxi_simufiled_docs/blob/master/sql_back/simufiled_stru.sql)如下：  
 ```sql
 CREATE DATABASE  IF NOT EXISTS `simufiled` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `simufiled`;
@@ -61,7 +61,7 @@ CREATE TABLE `Scene` (
 ###准备资源文件, 具体文件见附件
  - 服务运行软件包，simufiled-svc-1.0.0.jar (./ 目录下)
  - 图片存取服务配置，thumbor.conf (./thumbor 目录下)
- - 服务启动配置文件 supervisord_thumber_websvc.conf (./ 目录下)，需根据实际情况修改，simufiled-svc-1.0.0.jar所在位置、服务启动参数（数据库信息、对外端口等）、log存储路径:   
+ - 服务启动配置文件 supervisord_thumber_websvc.conf (./ 目录下)，需根据实际情况修改，simufiled-svc-1.0.0.jar所在位置、服务启动参数（数据库信息、对外端口等）、log存储路径:     
   ***/home/simufiled/ 需根据实际进行替换;***      
   ***thumbor --port=8888 --conf=/home/simufiled/thumbor/thumbor.conf 根据需要修改图片存取服务的端口与配置文件所在位置;***                    
   ***java -jar 根据实际情况调整 数据库信息，后台用户管理系统usermanager.url等信息***          
