@@ -58,10 +58,10 @@ CREATE TABLE `Scene` (
 ```
  - 准备好后台用户管理系统，以http://ip:port/viot/api/ 相关接口可用为结果, 注意更新下文中的usermanager.url。   
  
-###准备资源文件, 具体文件见附件
+###准备资源文件, 具体文件见[附件](https://github.com/shlhs/wuxi_simufiled_docs/blob/master/deploy_config)
  - 服务运行软件包，simufiled-svc-1.0.0.jar (./ 目录下)
- - 图片存取服务配置，thumbor.conf (./thumbor 目录下)
- - 服务启动配置文件 supervisord_thumber_websvc.conf (./ 目录下)，需根据实际情况修改，simufiled-svc-1.0.0.jar所在位置、服务启动参数（数据库信息、对外端口等）、log存储路径:     
+ - 图片存取服务配置，[thumbor.conf](https://github.com/shlhs/wuxi_simufiled_docs/blob/master/deploy_config/thumbor/thumbor.conf) (./thumbor 目录下)
+ - 服务启动配置文件 [supervisord_thumber_websvc.conf](https://github.com/shlhs/wuxi_simufiled_docs/blob/master/deploy_config/supervisord_thumber_websvc.conf) (./ 目录下)，需根据实际情况修改，simufiled-svc-1.0.0.jar所在位置、服务启动参数（数据库信息、对外端口等）、log存储路径:     
   ***/home/simufiled/ 需根据实际进行替换;***      
   ***thumbor --port=8888 --conf=/home/simufiled/thumbor/thumbor.conf 根据需要修改图片存取服务的端口与配置文件所在位置;***                    
   ***java -jar 根据实际情况调整 数据库信息，后台用户管理系统usermanager.url等信息***          
