@@ -56,12 +56,12 @@ CREATE TABLE `Scene` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 ```
- - 准备好后台用户管理系统，以http://ip:port/viot/api/ 相关接口可用为结果。   
+ - 准备好后台用户管理系统，以http://ip:port/viot/api/ 相关接口可用为结果, 注意更新下文中的usermanager.url。   
  
 ###准备资源文件, 具体文件见附件
- - 服务运行软件包，simufiled-svc-1.0.0.jar
- - 图片存取服务配置，thumbor.conf
- - 服务启动配置文件 supervisord_thumber_websvc.conf，需根据实际情况修改，simufiled-svc-1.0.0.jar所在位置、服务启动参数（数据库信息、对外端口等）、log存储路径:   
+ - 服务运行软件包，simufiled-svc-1.0.0.jar (./ 目录下)
+ - 图片存取服务配置，thumbor.conf (./thumbor 目录下)
+ - 服务启动配置文件 supervisord_thumber_websvc.conf (./ 目录下)，需根据实际情况修改，simufiled-svc-1.0.0.jar所在位置、服务启动参数（数据库信息、对外端口等）、log存储路径:   
   ***/home/simufiled/ 需根据实际进行替换;***      
   ***thumbor --port=8888 --conf=/home/simufiled/thumbor/thumbor.conf 根据需要修改图片存取服务的端口与配置文件所在位置;***                    
   ***java -jar 根据实际情况调整 数据库信息，后台用户管理系统usermanager.url等信息***          
@@ -93,7 +93,7 @@ stderr_logfile_maxbytes=1MB
 stderr_logfile_backups=10
 
 [program:wuxiwebsvc]
-command=java -jar /home/simufiled/simufiled-svc-1.0.0.jar --server.port=8090 --spring.datasource.url=jdbc:mysql://127.0.0.1:3306/simufiled --spring.datasource.username=root --spring.datasource.password=test --usermanager.url=http://114.215.90.83:8082/viot/api/
+command=java -jar /home/simufiled/simufiled-svc-1.0.0.jar --server.port=8090 --spring.datasource.url=jdbc:mysql://127.0.0.1:3306/simufiled --spring.datasource.username=root --spring.datasource.password=xxxx --usermanager.url=http://114.215.90.83:8082/viot/api/
 process_name=wuxiwebsvc
 numprocs=1
 user=root
