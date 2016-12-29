@@ -25,7 +25,8 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
 ```shell
 root@iZ28yy5kssxZ:~# thumbor --version
 Thumbor v6.0.1 (22-Mar-2016)
-```
+```     
+
  - 安装进程管理工具[Supervisor](http://www.supervisord.org), 版本不低于3.3.1, 结果如下:   
 ```shell
 root@iZ28yy5kssxZ:~# supervisord --version
@@ -128,3 +129,36 @@ root      1517  1515  0 Nov13 ?        00:06:02 java -jar /home/simufiled/simufi
 ###检查业务是否正常
  - 服务后台，http://ip:port/login, 可正常访问，输入正确的用户信息，可登录；输入错误的用户信息，则返回401认证失败。
  - 图片存储服务，可使用thumbor的[rest-api](http://thumbor.readthedocs.io/en/latest/how_to_upload_images.html)进行测试检测；也可直接在仿真软件的桌面客户端上直接进行相关的验证。
+ 
+### FAQ
+#### 安装或运行图片服务器thumbor失败，出现关于pycurl的错误
+过程中如遇到无法安装依赖pycurl，或者运行显示缺少pycurl, 问题现象如下:
+```shell
+root@iZ28yy5kssxZ:/home/simufiled# pip install thumbor
+.....
+....
+...
+----------------------------------------
+Cleaning up...
+Command python setup.py egg_info failed with error code 1 in /tmp/pip_build_root/pycurl
+Storing debug log for failure in /root/.pip/pip.log
+
+root@iZ28yy5kssxZ:/home/simufiled# thumbor --version
+Traceback (most recent call last):
+  File "/usr/local/bin/thumbor", line 5, in <module>
+    from pkg_resources import load_entry_point
+  File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 2749, in <module>
+    working_set = WorkingSet._build_master()
+  File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 444, in _build_master
+    ws.require(__requires__)
+  File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 725, in require
+    needed = self.resolve(parse_requirements(requirements))
+  File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 628, in resolve
+    raise DistributionNotFound(req)
+pkg_resources.DistributionNotFound: pycurl>=7.19.0,<7.44.0
+```
+  解决办法：手动或通过其他方式安装pycurl,例如    
+```shell
+sudo aptitude install python-pycurl
+```
+  更多安装方式，参看[链接](http://stackoverflow.com/questions/507927/how-do-i-install-pycurl)
