@@ -157,8 +157,9 @@ Traceback (most recent call last):
     raise DistributionNotFound(req)
 pkg_resources.DistributionNotFound: pycurl>=7.19.0,<7.44.0
 ```
-  解决办法：手动或通过其他方式安装pycurl,例如    
+  解决办法：手动或通过其他方式安装pycurl，例如    
 ```shell
 sudo aptitude install python-pycurl
 ```
-  更多安装方式，参看[链接](http://stackoverflow.com/questions/507927/how-do-i-install-pycurl)
+  更多安装方式，参看[链接](http://stackoverflow.com/questions/507927/how-do-i-install-pycurl)，安装成功后，继续通过pip install thumbor安装图片服务器。
+  说明：pip uninstall thumbor卸载；若遇到类似缺少依赖包的情况，可上网查询手动或其他安装方式。
